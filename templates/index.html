@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    {% include 'includess/head_tags.html' %}
+  </head>
+
+  <body class="material-template">
+    <!-- Loading animation -->
+    <div class="preloader">
+      <div class="preloader-animation">
+        <div class="preloader-spinner"></div>
+      </div>
+    </div>
+    <!-- /Loading animation -->
+
+    <div id="page" class="page">
+      <!-- Header -->
+      <header id="site_header" class="header mobile-menu-hide">
+        <div class="header-content">
+          <div class="site-title-block mobile-hidden">
+            <div class="site-title">مهدی <span>میرآواره</span></div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="site-nav">
+            <!-- Main menu -->
+            <ul id="nav" class="site-main-menu">
+              <li>
+                <a class="pt-trigger" href="#home" data-animation="62">خانه</a>
+                <!-- href value = data-id without # of .pt-page. -->
+              </li>
+            <!--  <li>
+                <a class="pt-trigger" href="#resume" data-animation="62"
+                  >رزومه</a
+                >
+              </li> -->
+              <li>
+                <!-- <a class="pt-trigger" href="#services" data-animation="62">خدمات</a> -->
+              </li>
+              <li>
+                <!--  <a class="pt-trigger" href="#portfolio" data-animation="62">نمونه کار</a> -->
+              </li>
+              <li>
+                <!-- <a class="pt-trigger" href="#blog" data-animation="62">وبلاگ</a> -->
+              </li>
+
+            <!--  <li>
+                <a class="pt-trigger" href="#contact" data-animation="62"
+                  >تماس</a
+                >
+
+              </li> -->
+            </ul>
+            <!-- /Main menu -->
+          </div>
+          <!-- Navigation -->
+        </div>
+      </header>
+      <!-- /Header -->
+
+      <!-- Mobile Header -->
+      <div class="mobile-header mobile-visible">
+        <div class="mobile-logo-container">
+          <div class="mobile-site-title">مهدی میرآواره</div>
+        </div>
+
+        <a class="menu-toggle mobile-visible">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <!-- /Mobile Header -->
+
+      <!-- Main Content -->
+      <div id="main" class="site-main">
+        <!-- Page changer wrapper -->
+        <div class="pt-wrapper">
+          <!-- Subpages -->
+          <div class="subpages">
+            <!-- Home Subpage -->
+            {% include 'includess/home_page.html' %}
+            <!-- End of Home Subpage -->
+
+            <!-- Resume Subpage -->
+            {% include 'includess/resume_page.html' %}
+            <!-- End of Resume Subpage -->
+
+            <!-- Contact Subpage -->
+
+            <section class="pt-page" data-id="contact">
+              <div class="section-inner custom-page-content">
+                <div class="page-header color-1">
+                  <h2>تماس</h2>
+                </div>
+                <div class="page-content">
+                  <div class="row">
+                    <div class="col-sm-6 col-md-6">
+                      <div class="block-title">
+                        <h3>تماس <span>باما</span></h3>
+                      </div>
+                      <!-- Google Map -->
+                      {#
+                      <div id="map" class="map"></div>
+                      #}
+                      <!-- End of Google Map -->
+
+                      <div class="contact-info-block">
+                        <div class="ci-icon">
+                          <i class="fa fa-map-marker"></i>
+                        </div>
+                        <div class="ci-text">
+                          <h5>{{ info.address }}</h5>
+                        </div>
+                      </div>
+                      <div class="contact-info-block">
+                        <div class="ci-icon">
+                          <i class="fa fa-envelope"></i>
+                        </div>
+                        <div class="ci-text">
+                          <h5>{{ info.email }}</h5>
+                        </div>
+                      </div>
+                      <div class="contact-info-block">
+                        <div class="ci-icon">
+                          <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="ci-text">
+                          <h5>{{ info.phone }}</h5>
+                        </div>
+                      </div>
+                      <div class="contact-info-block">
+                        
+                        <div class="ci-icon">
+                          
+                        </div>
+                        
+                        <div class="ci-text">
+                          
+                          <h5>فریلنسری {{ info.status }}</h5>
+                          
+                        </div>
+                        
+                      </div>
+                      
+                    </div>
+
+                    <div class="col-sm-6 col-md-6">
+                      <div class="block-title">
+                        <h3>فرم <span>تماس</span></h3>
+                      </div>
+                      <form id="form-controll" method="post" action="">
+                        {% csrf_token %}
+                        <div class="messages"></div>
+
+                        <div class="controls">
+                          <div class="form-group form-group-with-icon">
+                            <i class="fa fa-user"></i>
+                            <label>نام کامل</label>
+                            <input
+                              id="form_name"
+                              type="text"
+                              name="name"
+                              class="form-control"
+                              placeholder
+                              required="required"
+                              data-error="نام الزامی است."
+                            />
+                            <div class="form-control-border"></div>
+                            <div class="help-block with-errors"></div>
+                          </div>
+
+                          <div class="form-group form-group-with-icon">
+                            <i class="fa fa-envelope"></i>
+                            <label>آدرس ایمیل</label>
+                            <input
+                              id="form_email"
+                              type="email"
+                              name="email"
+                              class="form-control"
+                              placeholder
+                              required="required"
+                              data-error="ایمیل معتبر مورد نیاز است."
+                            />
+                            <div class="form-control-border"></div>
+                            <div class="help-block with-errors"></div>
+                          </div>
+
+                          <div class="form-group form-group-with-icon">
+                            <i class="fa fa-comment"></i>
+                            <label>پیام برای من</label>
+                            <textarea
+                              id="form_message"
+                              name="message"
+                              class="form-control"
+                              placeholder
+                              rows="4"
+                              required="required"
+                              data-error="لطفا برای من پیام بگذارید"
+                            ></textarea>
+                            <div class="form-control-border"></div>
+                            <div class="help-block with-errors"></div>
+                          </div>
+
+                          <div
+                            class="g-recaptcha"
+                            data-sitekey="6LdqmCAUAAAAAMMNEZvn6g4W5e0or2sZmAVpxVqI"
+                          ></div>
+
+                          <input
+                            type="submit"
+                            class="button btn-send"
+                            value="ارسال پیام"
+                          />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- End Contact Subpage -->
+          </div>
+        </div>
+        <!-- /Page changer wrapper -->
+      </div>
+      <!-- /Main Content -->
+    </div>
+    <footer>
+      <div class="copyrights">© طراحی وبسایت توسط مهدی میرآواره در 2024</div>
+    </footer>
+
+    <script
+      type="text/javascript"
+      src="{% static 'js/bootstrap.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/pages-switcher.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/imagesloaded.pkgd.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/validator.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery.shuffle.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/masonry.pkgd.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/owl.carousel.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery.magnific-popup.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery.hoverdir.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/jquery.googlemap.js' %}"
+    ></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
