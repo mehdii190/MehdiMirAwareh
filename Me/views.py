@@ -21,3 +21,9 @@ def page(request):
         Contact.objects.create(name=full_name, email=email, message=message)
 
     return render(request, 'index.html', {'info': my_info, 'resume': my_resume})
+
+
+def post(request):
+    
+    
+    return HttpResponse("You're voting on question")
